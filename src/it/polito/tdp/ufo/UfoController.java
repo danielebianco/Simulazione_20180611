@@ -66,7 +66,7 @@ public class UfoController {
     		txtResult.appendText(s.toString()+"; ");
     	}
     	
-    	List<State> raggiungibili = model.displayNeighboursBreadthFirstIterator(stato);
+    	List<State> raggiungibili = model.mostraRaggiungibili(stato);
     	
     	txtResult.appendText("\n\nStati raggiungibili da " + stato +
     			": (" +raggiungibili.size()+ ")\n");
@@ -74,6 +74,7 @@ public class UfoController {
     	for(State r : raggiungibili) {
     		txtResult.appendText(r.toString()+"; ");
     	}
+    	
     }
 
     @FXML

@@ -56,8 +56,10 @@ public class Model {
 		return Graphs.successorListOf(graph, stato);
 	}	
 	
-		/**  SOLUZIONE 1Cii -- VALIDE ENTRAMBE  */
-	
+		
+/*  
+ 	NON VA BENE PERCHE' VICINI (= succ + predec) != RAGGIUNGIBILI --> (disegno Corno alla lavagna)
+
 	public List<State> displayNeighbours(State stato) {
 
 		List<State> vicini = new ArrayList<State>();
@@ -68,8 +70,9 @@ public class Model {
 		// Ritorno la lista dei vicini
 		return vicini;
 	}
+*/	
 	
-	public List<State> displayNeighboursBreadthFirstIterator(State stato) {
+	public List<State> mostraRaggiungibili(State stato) {
 		
 		State start = stateIdMap.get(stato); // trova il vertice di partenza
 		
@@ -114,7 +117,5 @@ public class Model {
 			}
 		}
 	}
-	
-	
 	
 }
