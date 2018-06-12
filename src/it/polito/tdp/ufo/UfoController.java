@@ -5,9 +5,8 @@
 package it.polito.tdp.ufo;
 
 import java.net.URL;
-import java.util.List;
+import java.util.*;
 import java.util.ResourceBundle;
-import java.util.Set;
 
 import it.polito.tdp.ufo.model.AnnoCount;
 import it.polito.tdp.ufo.model.Model;
@@ -67,10 +66,11 @@ public class UfoController {
     		txtResult.appendText(s.toString()+"; ");
     	}
     	
-    	txtResult.appendText("\n\nStati raggiungibili da " + stato +
-    			": (" + model.getNumNeighbours(stato)+ ")\n");
+    	List<State> raggiungibili = model.displayNeighboursBreadthFirstIterator(stato);
     	
-    	Set<State> raggiungibili = model.displayNeighbours(stato);
+    	txtResult.appendText("\n\nStati raggiungibili da " + stato +
+    			": (" +raggiungibili.size()+ ")\n");
+    	    	
     	for(State r : raggiungibili) {
     		txtResult.appendText(r.toString()+"; ");
     	}
@@ -95,6 +95,16 @@ public class UfoController {
 
     @FXML
     void handleSequenza(ActionEvent event) {
+    	
+    	State stato = this.boxStato.getValue();
+    	if(stato == null) {
+    		this.txtResult.setText("Errore: selezionare uno Stato!");
+    		return;
+    	}
+    	
+    	List<State> sequenza = model.getPercorsoMax(stato);
+    	txtResult.appendText("\nStato di partenza: " + stato + "\n");
+    	txtResult.appendText("\nPercorso max: " + sequenza + "\n");
     	
     }
 
